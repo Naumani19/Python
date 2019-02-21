@@ -1,0 +1,34 @@
+#1
+
+f = r"C:\Users\Sameer Naumani\Documents\Repos\SameerNaumani.github.io\images\sample-image.jpg"
+picture = makePicture(f)
+#explore(picture)
+
+def Zero(picture):
+  for pixel in getPixels(picture):
+    setRed(pixel,0)
+    setGreen(pixel,0)
+    setBlue(pixel,0)
+  explore(picture)
+  
+  
+#2
+#def max(picture):
+  for pixel in getPixels(picture):
+    setRed(pixel,255)
+    setGreen(pixel,255)
+    setBlue(pixel,255)
+  explore(picture)
+  
+  
+def test4(picture) :
+  for pixel in getPixels(picture) :
+    red = getRed(pixel)/3
+    green = getGreen(pixel)/3
+    blue = getBlue(pixel)/3
+    color = makeColor(red, green, blue)
+    setColor(pixel, color)
+  show(picture)
+
+
+  
