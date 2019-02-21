@@ -83,7 +83,7 @@ def spacedout2(string,n):
   print pile
   
 #8
-f = r"C:\Users\Sameer Naumani\Documents\Winter 2019\CPS109\Labs\Beach.jpg"
+f = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Lab3\images\caterpillar.jpg"
 picture = makePicture(f)
 #explore(picture)
 
@@ -92,12 +92,12 @@ def decreaseRed20(picture):
     value = getRed(pixel)
     setRed(pixel,0.2 *value)
   explore(picture)
-  file = r"C:\Users\Sameer Naumani\Documents\Winter 2019\CPS109\Labs\Beach2.jpg"
+  file = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Lab3\images\caterpillar2.jpg"
   writePictureTo(picture,file)      
   
   
 #10
-f2 = r"C:\Users\Sameer Naumani\Documents\Winter 2019\CPS109\Labs\caterpillar.jpg"
+f2 = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Lab3\images\caterpillar.jpg"
 picture2 = makePicture(f2)
 #explore(picture2)
 
