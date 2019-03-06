@@ -10,17 +10,17 @@ def Zero(picture):
     setGreen(pixel,0)
     setBlue(pixel,0)
   explore(picture)
-  
-  
-#2
-#def max(picture):
+
+
+#2s
+def max(picture):
   for pixel in getPixels(picture):
     setRed(pixel,255)
     setGreen(pixel,255)
     setBlue(pixel,255)
   explore(picture)
-  
-#3 
+
+#3
 def test4(picture) :
   for pixel in getPixels(picture) :
     red = getRed(pixel)/3
@@ -29,7 +29,7 @@ def test4(picture) :
     color = makeColor(red, green, blue)
     setColor(pixel, color)
   show(picture)
-  
+
 #4
 def blue(picture):
   for pixel in getPixels(picture):
@@ -39,7 +39,7 @@ def blue(picture):
       setGreen(pixel,255)
       setRed(pixel,255)
   explore(picture)
-  
+
 #5
 def blueish(picture):
   for pixel in getPixels(picture):
@@ -59,7 +59,7 @@ def blueify(picture):
     color = makeColor(red, green, blue)
     setColor(pixel,color)
   show(picture)
-  
+
 #7
 def greyScale(picture):
   for px in getPixels(picture):
@@ -81,7 +81,7 @@ def greyScale(picture):
 def decomposition(picture):
   greyscale(picture)
   negate(picture)
-  
+
 def greyscale(picture):
   for px in getPixels(picture):
     newRed = getRed(px) * 0.3
@@ -90,7 +90,7 @@ def greyscale(picture):
     luminance = newRed+newGreen+newBlue
     setColor(px,makeColor(luminance,luminance,luminance))
   explore(picture)
-  
+
 def negate(picture):
   for p in getPixels(picture):
     red=getRed(p)
@@ -99,7 +99,7 @@ def negate(picture):
     negColor=makeColor( 255-red, 255-green, 255-blue)
     setColor(p,negColor)
   explore(picture)
-  
+
 #9
 def lighten(picture):
   for px in getPixels(picture):
@@ -113,19 +113,14 @@ def lighten(picture):
     luminance = newRed+newGreen+newBlue
     setColor(px,makeColor(luminance,luminance,luminance))
   explore(picture)
-  
+
 #10
 def lighter(picture):
   light(picture)
   greyscale(picture)
- 
-def light(picture): 
+
+def light(picture):
   for px in getPixels(picture):
    color = getColor(px)
    color = makeLighter(color)
    setColor(px ,color)
-
-  
-
-
-  
