@@ -52,6 +52,7 @@ def ASCII(s):
 def ASCII2(s):
   val = ord(s)
   print chr(val+1)
+  print chr(ord('z') + 1)
 #Ans {
 
 #7 Write a function mirror2(string) that mirrors a string but doubles each letter at the same time, so mirror2('abC') would print 'CCbbaaaabbCC'.  
