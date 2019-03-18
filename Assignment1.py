@@ -5,10 +5,10 @@
 # The functions are based on material from Chapters 1-4 of the course text.
 # I am modifying the llama picture from the course resources, but
 # you can use any picture of your own or from the media resources.
-# Function 1
+
+# Function 1 add Box
 # This function puts a red box on the llama
 # First explore to find the coordinates
-
 def addBox(picture) :
   pixels = getPixels(picture)
   for pixel in pixels :
@@ -33,7 +33,6 @@ def addCircle(picture, xc, yc, radius, color) :
     distance = math.sqrt((x - xc)**2 + (y - yc)**2)
     if distance < radius :
       setColor(pixel, color)
-
 
 # Function 4
 # Draw a black line on the picture, given two points defining the line
@@ -71,7 +70,7 @@ def addLine2(picture, x1, y1, x2, y2, thickness, color) :
     if distance < thickness / 2 :
       setColor(pixel, color)
 # Below we are calling the functions and saving the picture
-  f_llama = '/home/eharley/1/llama.jpg'
+  f_llama = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Assignment1\Images\llama.jpg"
   llama = makePicture(f_llama)
   addBox(llama)
   addCircle(llama, 16, 16, 16, red)
@@ -86,17 +85,48 @@ def addLine2(picture, x1, y1, x2, y2, thickness, color) :
   writePictureTo(llama, '/home/eharley/1/a1.jpg')
 
 #Picture 1
-#
-f1 = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Assignment1\Images\goku.jpg"
-picture1 = makePicture(f1)
-explore(picture)
+#Goku
+f1 = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Assignment1\Images\leafs.jpg"
+p1 = makePicture(f1)
+explore(p1)
 
-#goku
-#1 ligthen the picture
-#2 greycale the picture
-#3 single out his hair
-#4 add a line
+#Leafs
+#6 ligthen the picture
+#7 greyscale the picture
+#8 Change the line getColor
+#9 Split in half
 
+#Function 6
+# Lighten the entire picture using makeLighter functions
+def light(p1):
+  for px in getPixels(p1):
+   color = getColor(px)
+   color = makeLighter(color)
+   setColor(px ,color)
+
+#Function 7
+# Turn the picture into greyscale. We will first use the luminance values to reduce red, blue and green values.
+# After which negate the values by subtracting each from 255
+def greyScale(p1):
+  for px in getPixels(p1):
+    newRed = getRed(px) * 0.3
+    newGreen = getGreen(px) * 0.6
+    newBlue = getBlue(px) * 0.1
+    luminance = newRed+newGreen+newBlue
+    setColor(px,makeColor(luminance,luminance,luminance))
+  show(picture)
+  for p in getPixels(p1):
+    red=getRed(p)
+    green=getGreen(p)
+    blue=getBlue(p)
+    negColor=makeColor( 255-red, 255-green, 255-blue)
+    setColor(p,negColor)
+  show(picture)
+
+# Function 8
+# Change the color of the bottom line
+def linechange(p1):
+    for px in getPixels(p1):
 
 
 def Zero(picture):
@@ -105,8 +135,8 @@ def Zero(picture):
     setGreen(pixel,0)
     setBlue(pixel,0)
   explore(picture)
-  
-  
+
+
 #2
 #def max(picture):
   for pixel in getPixels(picture):
@@ -114,8 +144,8 @@ def Zero(picture):
     setGreen(pixel,255)
     setBlue(pixel,255)
   explore(picture)
-  
-#3 
+
+#3
 def test4(picture) :
   for pixel in getPixels(picture) :
     red = getRed(pixel)/3
@@ -124,7 +154,7 @@ def test4(picture) :
     color = makeColor(red, green, blue)
     setColor(pixel, color)
   show(picture)
-  
+
 #4
 def blue(picture):
   for pixel in getPixels(picture):
@@ -134,7 +164,7 @@ def blue(picture):
       setGreen(pixel,255)
       setRed(pixel,255)
   explore(picture)
-  
+
 #5
 def blueish(picture):
   for pixel in getPixels(picture):
@@ -154,7 +184,7 @@ def blueify(picture):
     color = makeColor(red, green, blue)
     setColor(pixel,color)
   show(picture)
-  
+
 #7
 def greyScale(picture):
   for px in getPixels(picture):
@@ -176,7 +206,7 @@ def greyScale(picture):
 def decomposition(picture):
   greyscale(picture)
   negate(picture)
-  
+
 def greyscale(picture):
   for px in getPixels(picture):
     newRed = getRed(px) * 0.3
@@ -185,7 +215,7 @@ def greyscale(picture):
     luminance = newRed+newGreen+newBlue
     setColor(px,makeColor(luminance,luminance,luminance))
   explore(picture)
-  
+
 def negate(picture):
   for p in getPixels(picture):
     red=getRed(p)
@@ -194,7 +224,7 @@ def negate(picture):
     negColor=makeColor( 255-red, 255-green, 255-blue)
     setColor(p,negColor)
   explore(picture)
-  
+
 #9
 def lighten(picture):
   for px in getPixels(picture):
@@ -208,19 +238,14 @@ def lighten(picture):
     luminance = newRed+newGreen+newBlue
     setColor(px,makeColor(luminance,luminance,luminance))
   explore(picture)
-  
+
 #10
 def lighter(picture):
   light(picture)
   greyscale(picture)
- 
-def light(picture): 
+
+def light(picture):
   for px in getPixels(picture):
    color = getColor(px)
    color = makeLighter(color)
    setColor(px ,color)
-
-  
-
-
-  
