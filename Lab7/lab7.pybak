@@ -58,27 +58,9 @@ def drawGrid(picture1,spacing):
       
       
 
-def drawGrid12(picture, color):
-
-  w = getWidth(picture)
-  h = getHeight(picture)
-
-  printNow(str(w) + " x " + str(h))
-
-  w_offset = 20  # Vertical lines offset
-  h_offset = 10  # Horizontal lines offset
-
-  # Starting at 1 to avoid drawing on the border
-  for y in range(1, h):     
-    for x in range(1, w):
-      # Here is the trick: we draw only 
-      # every offset (% = modulus operator)
-      if (x % w_offset == 0) or (y % h_offset == 0):
-        px = getPixel(picture, x, y)
-        setColor(px, color)
         
 
-#5 not done
+#5 
 def drawGrid2(picture1):
   spacing = 5
   W = getWidth(picture1)
@@ -94,7 +76,6 @@ def drawGrid2(picture1):
     
       #horiz   
    # addLine(picture1,x,y,W,y,black)
-
   explore(picture1)
   
 
