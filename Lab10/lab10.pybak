@@ -1,7 +1,7 @@
 #Lab 10
 
 
-file = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Lab10\Elliot-hello.wav"
+file = r"C:\Users\Sameer Naumani\Documents\Repos\Python\Lab10\moondog.Bird_sLament.wav"
 sound = makeSound(file)
 explore(sound)
 
@@ -22,51 +22,68 @@ def increaseDecrease(sound, position):
 def increaseDecrease2(sound):
   sound2 = duplicateSound(sound)
   largest = 0
+  second = 1
+  #samples/sec
   samplingRate = int(getSamplingRate(sound2))
   for sample in getSamples(sound2):
     largest = max(largest,abs(getSampleValue(sample)))
   amplification = 32767.0/largest
  
-  #normalize first second
-  if(samplingRate>getLength(sound2)):
-    for s in range(0,getLength(sound2)):
+  #normalize first second  
+  for s in range(0,getLength(sound2)):
+    seconds = int(getLength(sound2)/samplingRate)
+    #normalize first second
+    if(s <= samplingRate):
       louder = amplification * getSampleValueAt(sound2,s)
       setSampleValueAt(sound2,s,louder)
+    else:
+      for second in (0,seconds):
+        amplification = 1 - (0.2)*second
+        volume = amplification * getSampleValueAt(sound2,s)
+        setSampleValueAt(sound2,s,volume)
       
-  for sampleindex in range(0,samplingRate):
-    value = getSampleValueAt(sound2,sampleindex)
-    setSampleValueAt(sound2,sampleindex,largest)
-    
-    factor = int(largest/5)
-    starting = samplingRate
-    i=2
-    
-    while(starting <getLength(sound)):
-      if((starting + samplingRate) < getLength(sound)):
-        for sindex in range(starting,(starting+samplingRate)):
-          value = getSampleValueAt(sound2,sindex)
-          setSampleValueAt(sound,setSampleValueAt(sindex,value*(largest-factor)))
-          factor=factor*i
-          i +=1
-          starting = starting + samplingRate
-      else:
-        for sindex in range(starting, getLength(sound)):
-          value = getSampleValueAt(sound2,sindex)
-          setSampleValueAt(sound2,sindex,value*(largest-factor))
-          break
-          
-      
-     
   explore(sound2)
+      
+ 
             
 
 #3
 def thisistest(sound):
   target = duplicateSound(sound)
-  targetIndex = 0
+  targetIndex = 11730
   for sourceIndex in range(0,11135):
     setSampleValueAt(target,targetIndex,getSampleValueAt(sound,sourceIndex))
-    
+    targetIndex = targetIndex+1
+  
+  targetIndex2 = 43095
+  for sourceIndex in range(12240,19210):
+    setSampleValueAt(target,targetIndex2,getSampleValueAt(sound,sourceIndex))
+    targetIndex2 = targetIndex2+1
+
+#4    
+def reverse(sound):
+  target = makeEmptySound(getLength(sound))
+  #start at end
+  sourceIndex = getLength(sound)-1
+  s = getSamples(sound)
+  for index in range(0,getLength(target)):
+    value = getSampleValue(s[sourceIndex])
+    setSampleValueAt(target,index,value)
+    sourceIndex = sourceIndex-1
+  
+  explore(target)
+
+#5  
+def clip(sound,start,end):
+  target = makeEmptySound(end-start)
+  tIndex = 0
+  s = getSamples(sound)
+  for index in range(start,end):
+    value = getSampleValue(s[index])
+    setSampleValueAt(target,tIndex, value)
+    tIndex = tIndex + 1
+  
+  explore(target)
   
   
        
