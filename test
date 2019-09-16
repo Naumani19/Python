@@ -1,0 +1,47 @@
+def hi():
+  print("hello yoda")
+  
+def madlib(name,pet,verb,snack):
+  line1 = "Once upon a time " + name + " was walking"
+  line2 = " with " + pet + " and then he saw a dog"
+  line3 = " And the dog looked very hungry so he gave him some of his, " + snack
+  line4 = " And then the dog wagged his tail and " + verb + " away"
+  
+  print line1 + line2 + line3 + line4
+  
+
+def invertedpyramid(letter):
+  space = " "
+  print 6*space, letter
+  print 4*space, 3*letter
+  print 2*space, 5*letter
+  print space, 7*letter
+  print 9*letter
+  
+You have written an essay that should be at least five pages long, but it is only 4.5 pages. You
+decide to use your new python skills to stretch it out by putting spaces between each letter and
+the next. Write a function that takes a string and a number and prints out the string with number
+of spaces between each pair of letters:
+>>> spacedout(“It was a dark and stormy night”, 3)
+I t w a s a d a r k a n d s t o m y n i g h t
+def spacedout(string,n):
+pile = ''
+space = ' '
+for index in string:
+pile = pile + index + space*n
+print pile
+
+6) You are afraid that is too obvious, so you decide to write spacedout2(string, n)
+which puts n spaces between each pair of words, rather than letters:
+>>> spacedout2(“It was a dark and stormy night”, 3)
+It was a dark and stomy night
+
+def spacedout2(string,n):
+pile = ''
+space = ' '
+for index in string:
+if not index in " ":
+pile = pile + index
+if index in " ":
+pile = pile + index + space*n
+print pile
